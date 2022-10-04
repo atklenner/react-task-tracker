@@ -10,6 +10,13 @@ function App() {
     { id: 3, text: "Get Together", day: "02/07/2022", reminder: false },
   ]);
 
+  const addTask = (task) => {
+    const id = Math.floor(Math.random() * 10000);
+    setTasks((prevTasks) => {
+      return [...prevTasks, { ...task, id }];
+    });
+  };
+
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
@@ -25,7 +32,7 @@ function App() {
   return (
     <div className="container">
       <Header title="Task Tracker" />
-      <AddTask />
+      <AddTask onAdd={addTask} />
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
