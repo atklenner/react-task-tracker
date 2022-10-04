@@ -1,9 +1,15 @@
+import Task from "./Task";
+
 export default function Tasks({ tasks }) {
   return (
     <>
-      {tasks.map((task) => (
-        <h3 key={task.id}>{task.text}</h3>
-      ))}
+      {tasks.map((task) => {
+        return (
+          <>
+            <Task key={task.id} task={task} />
+          </>
+        );
+      })}
     </>
   );
 }
