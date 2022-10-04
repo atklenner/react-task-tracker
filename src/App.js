@@ -9,6 +9,7 @@ function App() {
     { id: 2, text: "Meeting", day: "02/06/2022", reminder: true },
     { id: 3, text: "Get Together", day: "02/07/2022", reminder: false },
   ]);
+  const [showAddTask, setShowAddTask] = useState(false);
 
   const addTask = (task) => {
     const id = Math.floor(Math.random() * 10000);
@@ -31,8 +32,12 @@ function App() {
 
   return (
     <div className="container">
-      <Header title="Task Tracker" />
-      <AddTask onAdd={addTask} />
+      <Header
+        title="Task Tracker"
+        onClick={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
+      {showAddTask && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
