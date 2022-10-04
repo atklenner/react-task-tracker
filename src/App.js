@@ -4,11 +4,7 @@ import { useState } from "react";
 import AddTask from "./components/AddTask";
 
 function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, text: "Appointment", day: "02/05/2022", reminder: true },
-    { id: 2, text: "Meeting", day: "02/06/2022", reminder: true },
-    { id: 3, text: "Get Together", day: "02/07/2022", reminder: false },
-  ]);
+  const [tasks, setTasks] = useState([]);
   const [showAddTask, setShowAddTask] = useState(false);
 
   const addTask = (task) => {
